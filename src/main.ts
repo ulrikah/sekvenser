@@ -1,5 +1,6 @@
 import "./style.css";
 import registry from "./registry";
+import paper from "paper";
 
 const main = () => {
     const app = document.querySelector<HTMLDivElement>("#app")!;
@@ -25,16 +26,18 @@ const main = () => {
         const entryElement: HTMLDivElement = document.createElement("div");
 
         entryElement.className = "sequence";
-        entryElement.innerHTML = `<p>${entry.author}</p>`;
-
-        // TODO: how to make canvas fill the entire parent div?
-        const canvasElement: HTMLCanvasElement =
-            document.createElement("canvas");
-
-        entryElement.appendChild(canvasElement);
+        // // TODO: how to make canvas fill the entire parent div?
+        entryElement.appendChild(entry.sequence.canvas);
         sequenceContainer.appendChild(entryElement);
+        // app.appendChild(entry.sequence.canvas);
+        // entry.sequence.setup();
     });
     app.appendChild(sequenceContainer);
+
+    registry.forEach((entry) => entry.sequence.setup());
+    paper.view.onFrame = (event: any) => {
+        registry.forEach((entry) => entry.sequence.step(event.frameCount));
+    };
 };
 
 main();

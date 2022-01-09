@@ -12,11 +12,14 @@
 .sequence-container {
     display: grid;
     grid-template-columns: auto auto;
-    border: 3px solid black;
+    border: 1px solid black;
 }
 
 .sequence {
-    border: 1px solid orange;
     height: 100%;
     width: 100%;
+}
+.sequence canvas {
+    display: block;
+    margin: auto;
 }

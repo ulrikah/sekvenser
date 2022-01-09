@@ -1,6 +1,6 @@
 import Sequence from "./sequence";
-import First from "./sequences/first";
-import Second from "./sequences/second";
+import Snake from "./sequences/snake";
+import Osc from "./sequences/osc";
 
 interface RegisterEntry {
     author: string;
@@ -10,19 +10,11 @@ interface RegisterEntry {
 const register: RegisterEntry[] = [
     {
         author: "@ulrikah",
-        sequence: new First(),
+        sequence: new Snake(),
     },
     {
         author: "@ulrikah",
-        sequence: new Second(),
-    },
-    {
-        author: "@ulrikah",
-        sequence: new First(),
-    },
-    {
-        author: "@ulrikah",
-        sequence: new Second(),
+        sequence: new Osc(),
     },
 ];
 export default register;
